@@ -66,6 +66,7 @@ int	main(int argc, char *argv[])
 			get_op_func(token, &stack, line_number);
 		}
 	}
+	free(line);
 	free_stack(stack);
 	fclose(file);
 	exit(EXIT_SUCCESS);
