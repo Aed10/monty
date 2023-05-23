@@ -9,8 +9,9 @@ int is_number(char *token)
 	int i;
 
 	i = 0;
-	for (; token[i] == ' ' || token[i] == '\t'; i++)
+	if (token[0] == '-')
 		i++;
+	
 	while (token[i] != '\0')
 	{
 		if (isdigit(token[i]) == 0)
