@@ -1,0 +1,5 @@
+*.json
+*.vscode
+*.swp
+!*
+*.c
