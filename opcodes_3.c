@@ -65,3 +65,35 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	}
 	printf("%c\n", ascii_val);
 }
+
+/**
+ * pstr - prints the string starting at the top of the stack, followed by a
+ * new line
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the opcode
+ * Return: void
+ */
+void pstr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int ascii;
+
+	(void)line_number;
+	if (stack == NULL || *stack == NULL)
+		printf("\n");
+
+	temp = *stack;
+	ascii = 0;
+	while (temp)
+	{
+		ascii = temp->n;
+		if (ascii >= 65 && ascii <= 90)
+			printf("%c", ascii);
+		else if (ascii >= 97 && ascii <= 122)
+			printf("%c", ascii);
+		else
+			break;
+		temp = temp->next;
+	}
+	printf("\n");
+}
