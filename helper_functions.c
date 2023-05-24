@@ -11,7 +11,7 @@ int is_number(char *token)
 	i = 0;
 	if (token[0] == '-')
 		i++;
-	
+
 	while (token[i] != '\0')
 	{
 		if (isdigit(token[i]) == 0)
