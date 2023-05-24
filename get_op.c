@@ -21,6 +21,7 @@ int get_op_func(char *token, stack_t **stack, unsigned int line_number)
 		{"sub", sub},
 		{"div", _div},
 		{"mul", mul},
+		{"mod", mod},
 		{NULL, NULL}};
 	i = 0;
 	while (ops[i].opcode != NULL)
