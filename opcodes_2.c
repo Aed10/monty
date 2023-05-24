@@ -108,3 +108,34 @@ void _div(stack_t **stack, unsigned int line_number)
 	pop(stack, line_number);
 	(*stack)->n = (*stack)->n / tmp;
 }
+
+/**
+ * mul - multiplies the second top element of the stack with the top element
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the opcode
+ * Return: void
+*/
+void mul(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	int tmp;
+
+	if (stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+
+	tmp = 0;
+	temp = *stack;
+	if (temp == NULL || temp->next == NULL)
+	{
+		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	tmp = temp->n;
+	pop(stack, line_number);
+	(*stack)->n = (*stack)->n * tmp;
+}
