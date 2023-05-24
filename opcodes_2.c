@@ -73,7 +73,7 @@ void sub(stack_t **stack, unsigned int line_number)
 }
 
 /**
- * div - divides the second top element of the stack by the top element
+ * _div - divides the second top element of the stack by the top element
  * @stack: pointer to the top of the stack
  * @line_number: line number of the opcode
  * Return: void
