@@ -35,6 +35,11 @@ typedef struct instruction_s
 	char	*opcode;
 	void	(*f)(stack_t **stack, unsigned int line_number);
 }	instruction_t;
+
+/* ---------------Functions----------------------*/
+void parse_file(FILE *file);
+void process_push(stack_t **stack, FILE *file, char *token, unsigned int line_number);
+void process_token(stack_t **stack, char *token, unsigned int line_number);
 int get_op_func(char *token, stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 int is_number(char *token);
