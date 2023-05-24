@@ -18,6 +18,7 @@ int get_op_func(char *token, stack_t **stack, unsigned int line_number)
 		{"swap", swap},
 		{"add", add},
 		{"nop", nop},
+		{"sub", sub},
 		{NULL, NULL}};
 	i = 0;
 	while (ops[i].opcode != NULL)
