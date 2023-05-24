@@ -57,18 +57,11 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	}
 	temp = *stack;
 	ascii_val = temp->n;
-	if (ascii_val <= 65 && ascii_val <= 90)
-	{
-		printf("%c\n", ascii_val);
-	}
-	else if (ascii_val <= 97 && ascii_val <= 122)
-	{
-		printf("%c\n", ascii_val);
-	}
-	else
+	if (ascii_val > 127 || ascii_val < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	printf("%c\n", ascii_val);
 }
