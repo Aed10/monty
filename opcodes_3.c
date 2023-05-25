@@ -120,7 +120,24 @@ void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp;
 	stack_t *last;
-	int top;
+	int top = 0, nb_nodes = 0;
+
+(void)line_number;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	temp = *stack;
+	while (temp->next)
+	{
+		temp = temp->next;
+		nb_nodes++;
+	}
+
+	if (nb_nodes < 2) /* Check if is there one node nothing to do */
+		return;
+
+	top = (*stack)->n;
+	pop(stack, line_number);
 
 	last = malloc(sizeof(stack_t));
 	if (last == NULL)
@@ -131,16 +148,6 @@ void rotl(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	(void)line_number;
-	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
-		return;
-
-	top = (*stack)->n;
-	pop(stack, line_number);
-	temp = *stack;
-	while (temp->next)
-		temp = temp->next;
-
 	last->n = top;
 	temp->next = last;
 	last->prev = temp;
