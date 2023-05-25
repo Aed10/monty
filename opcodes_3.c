@@ -51,7 +51,6 @@ void	mod(stack_t **stack, unsigned int line_number)
  */
 void	pchar(stack_t **stack, unsigned int line_number)
 {
-	stack_t	*temp;
 	int ascii_val;
 
 	ascii_val = 0;
@@ -63,8 +62,8 @@ void	pchar(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	temp = *stack;
-	ascii_val = temp->n;
+
+	ascii_val = (*stack)->n;
 	if (ascii_val > 127 || ascii_val < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
@@ -73,7 +72,8 @@ void	pchar(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	printf("%c\n", ascii_val);
+	putchar(ascii_val);
+	putchar('\n');
 }
 
 /**
