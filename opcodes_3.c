@@ -72,8 +72,7 @@ void	pchar(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	putchar(ascii_val);
-	putchar('\n');
+	printf("%c\n", ascii_val);
 }
 
 /**
@@ -90,7 +89,10 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	if (stack == NULL || *stack == NULL)
+	{
 		printf("\n");
+		return;
+	}
 
 	temp = *stack;
 	ascii = 0;
