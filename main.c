@@ -1,12 +1,11 @@
 #include "monty.h"
 
-char *global_line = NULL;
-FILE *global_file = NULL;
+global_t global = {NULL, NULL};
 /**
  * parse_file - parses a file
  * @file: file to parse
  */
-void	parse_file(FILE *global_file)
+void	parse_file(FILE *file)
 {
 	size_t len;
 	ssize_t	read;
@@ -18,10 +17,10 @@ void	parse_file(FILE *global_file)
 	stack = NULL;
 	line_number = 0;
 	token = NULL;
-	while ((read = getline(&global_line, &len, global_file)) != -1)
+	while ((read = getline(&global.line, &len, file)) != -1)
 	{
 		line_number++;
-		token = strtok(global_line, " \n\t");
+		token = strtok(global.line, " \n\t");
 		if (token == NULL || token[0] == '#')
 			continue;
 		if (strcmp(token, "push") == 0)
@@ -31,20 +30,20 @@ void	parse_file(FILE *global_file)
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				free_stack(stack);
-				free(global_line);
-				fclose(global_file);
+				free(global.line);
+				fclose(global.file);
 				exit(EXIT_FAILURE);
 			}
-			process_push(&stack, global_file, token, line_number);
+			process_push(&stack, global.file, token, line_number);
 		}
 		else
 		{
 			process_token(&stack, token, line_number);
 		}
 	}
-	free(global_line);
+	free(global.line);
 	free_stack(stack);
-	fclose(global_file);
+	fclose(global.file);
 	exit(EXIT_SUCCESS);
 }
 
@@ -61,14 +60,14 @@ void	process_push(stack_t **stack, FILE *file, char *token,
 {
 	int	i;
 
-	file = global_file;
+	file = global.file;
 	i = is_number(token);
 	if (i == 0)
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", line_number);
 		free_stack(*stack);
 		fclose(file);
-		free(global_line);
+		free(global.line);
 		exit(EXIT_FAILURE);
 	}
 	push(stack, atoi(token));
@@ -100,12 +99,12 @@ int	main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	global_file = fopen(argv[1], "r");
-	if (global_file == NULL)
+	global.file = fopen(argv[1], "r");
+	if (global.file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	parse_file(global_file);
+	parse_file(global.file);
 	return (0);
 }

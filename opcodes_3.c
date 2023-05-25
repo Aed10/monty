@@ -15,6 +15,8 @@ void	mod(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+		free(global.line);
+		fclose(global.file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -23,12 +25,16 @@ void	mod(stack_t **stack, unsigned int line_number)
 	if (temp == NULL || temp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+		free(global.line);
+		fclose(global.file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	if (temp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero", line_number);
+		free(global.line);
+		fclose(global.file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -52,6 +58,8 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	if (stack == NULL || *stack == NULL)
 	{
 		fprintf(stderr, "L%d:  can't pchar, stack empty\n", line_number);
+		free(global.line);
+		fclose(global.file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -60,6 +68,8 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	if (ascii_val > 127 || ascii_val < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free(global.line);
+		fclose(global.file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}

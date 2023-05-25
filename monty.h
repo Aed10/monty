@@ -10,8 +10,6 @@
 # include <unistd.h>
 
 /*--------------------------- Global variables --------------------------*/
-extern FILE *global_file; 
-extern char *global_line;
 
 /*--------------------------- Structures -------------------------------*/
 /**
@@ -43,6 +41,20 @@ typedef struct instruction_s
 	char	*opcode;
 	void	(*f)(stack_t **stack, unsigned int line_number);
 }	instruction_t;
+
+/**
+ * struct global_s - global variables
+ * @file: file
+ * @line: line
+*/
+typedef struct global_s
+{
+	FILE	*file;
+	char	*line;
+}	global_t;
+
+/*--------------------------- Global variables --------------------------*/
+extern global_t global;
 
 /* ---------------Functions----------------------*/
 void parse_file(FILE *file);
