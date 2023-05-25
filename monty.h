@@ -1,11 +1,19 @@
 #ifndef MONTY_H
 # define MONTY_H
 # define _POSIX_C_SOURCE 200809L
+
+/*--------------------------- Libraries --------------------------------*/
 # include <ctype.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+/*--------------------------- Global variables --------------------------*/
+extern FILE *global_file; 
+extern char *global_line;
+
+/*--------------------------- Structures -------------------------------*/
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

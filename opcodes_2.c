@@ -14,6 +14,8 @@ void add(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -23,6 +25,8 @@ void add(stack_t **stack, unsigned int line_number)
 	if (temp == NULL || temp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -55,6 +59,8 @@ void sub(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -64,6 +70,8 @@ void sub(stack_t **stack, unsigned int line_number)
 	if (temp == NULL || temp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't sub, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -86,6 +94,8 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -95,6 +105,8 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (temp == NULL || temp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -102,6 +114,8 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (tmp == 0)
 	{
 		fprintf(stderr, "L%d: division by zero", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -123,6 +137,8 @@ void mul(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
@@ -132,6 +148,8 @@ void mul(stack_t **stack, unsigned int line_number)
 	if (temp == NULL || temp->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short", line_number);
+		free(global_line);
+		fclose(global_file);
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
