@@ -14,7 +14,7 @@ void	mod(stack_t **stack, unsigned int line_number)
 
 	if (stack == NULL)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		free(global.line);
 		fclose(global.file);
 		free_stack(*stack);
@@ -24,7 +24,7 @@ void	mod(stack_t **stack, unsigned int line_number)
 	temp = *stack;
 	if (temp == NULL || temp->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't mod, stack too short", line_number);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		free(global.line);
 		fclose(global.file);
 		free_stack(*stack);
@@ -32,7 +32,7 @@ void	mod(stack_t **stack, unsigned int line_number)
 	}
 	if (temp->n == 0)
 	{
-		fprintf(stderr, "L%d: division by zero", line_number);
+		fprintf(stderr, "L%d: division by zero\n", line_number);
 		free(global.line);
 		fclose(global.file);
 		free_stack(*stack);
