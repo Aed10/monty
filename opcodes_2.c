@@ -8,9 +8,7 @@
 */
 void add(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp;
 	int tmp;
-	int nb_nodes;
 
 	if (stack == NULL)
 	{
@@ -20,15 +18,9 @@ void add(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	nb_nodes = 0;
+
 	tmp = 0;
-	temp = *stack;
-	while (temp != NULL)
-	{
-		nb_nodes++;
-		temp = temp->next;
-	}
-	if (*stack == NULL || (*stack)->next == NULL || nb_nodes < 2)
+	if (*stack == NULL || (*stack)->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		free(global.line);
