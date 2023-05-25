@@ -109,3 +109,41 @@ void pstr(stack_t **stack, unsigned int line_number)
 	}
 	printf("\n");
 }
+
+/**
+ * rotl - rotates the stack to the top
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the opcode
+ * Return: void
+ */
+void rotl(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+	stack_t *last;
+	int top;
+
+	last = malloc(sizeof(stack_t));
+	if (last == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		free(global.line);
+		fclose(global.file);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	(void)line_number;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	top = (*stack)->n;
+	pop(stack, line_number);
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+
+	last->n = top;
+	temp->next = last;
+	last->prev = temp;
+	last->next = NULL;
+
+}
