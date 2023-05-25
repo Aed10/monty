@@ -36,7 +36,7 @@ void add(stack_t **stack, unsigned int line_number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
-	tmp = temp->n;
+	tmp = (*stack)->n;
 	pop(stack, line_number);
 	(*stack)->n = (*stack)->n + tmp;
 }
