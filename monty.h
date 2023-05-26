@@ -51,6 +51,7 @@ typedef struct global_s
 {
 	FILE	*file;
 	char	*line;
+	int		queue;
 }	global_t;
 
 /*--------------------------- Global variables --------------------------*/
@@ -77,4 +78,7 @@ void mod(stack_t **stack, unsigned int line_number);
 void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl(stack_t **stack, unsigned int line_number);
+void _stack(stack_t **stack, unsigned int line_number);
+void queue(stack_t **stack, unsigned int line_number);
+void add_end_node(stack_t **stack, int number);
 #endif /* MONTY_H */

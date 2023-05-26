@@ -20,6 +20,12 @@ void	push(stack_t **stack, int number)
 		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
+	if (global.queue == 1)
+	{
+		add_end_node(stack, number);
+		free(new);
+		return;
+	}
 	new->n = number;
 	new->prev = NULL;
 	new->next = *stack;

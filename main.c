@@ -1,6 +1,6 @@
 #include "monty.h"
 
-global_t global = {NULL, NULL};
+global_t global = {NULL, NULL, 0};
 /**
  * parse_file - parses a file
  * @file: file to parse
