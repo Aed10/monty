@@ -56,7 +56,7 @@ void	pchar(stack_t **stack, unsigned int line_number)
 	ascii_val = 0;
 	if (stack == NULL || *stack == NULL)
 	{
-		fprintf(stderr, "L%d:  can't pchar, stack empty\n", line_number);
+		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 		free(global.line);
 		fclose(global.file);
 		free_stack(*stack);
