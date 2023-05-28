@@ -154,3 +154,28 @@ void rotl(stack_t **stack, unsigned int line_number)
 	last->next = NULL;
 
 }
+
+/**
+ * rotr - rotates the stack to the bottom
+ * @stack: pointer to the top of the stack
+ * @line_number: line number of the opcode
+ * Return: void
+ */
+void rotr(stack_t **stack, unsigned int line_number)
+{
+	stack_t *temp;
+
+	(void)line_number;
+	if (stack == NULL || *stack == NULL || (*stack)->next == NULL)
+		return;
+
+	temp = *stack;
+	while (temp->next)
+		temp = temp->next;
+	
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	*stack = temp;
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
+}

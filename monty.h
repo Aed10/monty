@@ -81,4 +81,5 @@ void rotl(stack_t **stack, unsigned int line_number);
 void _stack(stack_t **stack, unsigned int line_number);
 void queue(stack_t **stack, unsigned int line_number);
 void add_end_node(stack_t **stack, int number);
+void rotr(stack_t **stack, unsigned int line_number);
 #endif /* MONTY_H */
